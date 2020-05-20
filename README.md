@@ -12,7 +12,6 @@ Needed a method to warn people when too many people congregate in a conference r
 
 - Displays an alert on the Monitor and Touch 10 whenever too many people are in a conference room.
 
-### **Welcome to the codidCountMacro**
 
 ## Technologies & Frameworks Used
 
