@@ -21,7 +21,33 @@ function checkCount(count) {
   }
 }
 
-// Fetch current count and set feedback for change in peoplecount
+
+
+function cleanTouch10() {
+  let text2Display = 'For your safety, please disenfect the Touch 10 tablet before using.';
+  xapi.command(
+    	'UserInterface Message Alert Display',
+	  	{Title : 'COVID-19 ALERT',
+	  	Text : (text2Display),
+	  	Duration : (alertTime) }
+    )
+}
+
+function checkState(startUp) {
+  if (startUp == 'Off') {
+    cleanTouch10()
+    console.log('*** Console halfwake on - clean Touch 10. ')
+  }
+}
+
+// Put an alert on Touch10 when people walk in room to have them clean the screen.
+console.log('Adding listener to: Standby State');
+// Listen for people first entering room and waking system
+xapi.feedback.on('/Status/Standby/State', (startUp) => {
+    console.log('System Halfwake status changing to ',(startUp));
+    checkState(startUp);
+});
+// Check initial peoplecount and request feedback on any change in peoplecount
 xapi.status
     .get('RoomAnalytics PeopleCount')
     .then((count) => {
@@ -30,10 +56,10 @@ xapi.status
         checkCount(count.Current);
 
         // Listen to events
-        console.log('Adding feedback listener to: RoomAnalytics PeopleCount');
+        console.log('Adding listener to: RoomAnalytics PeopleCount');
         xapi.feedback.on('/Status/RoomAnalytics/PeopleCount', (count) => {
             checkCount(count.Current);
-            console.log(`Updated count to: ${count.Current}`);
+            console.log(`Current PeopleCount: ${count.Current}`);
         });
 
     })
