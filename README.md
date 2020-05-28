@@ -44,3 +44,4 @@ People responsible for the creation and maintenance of this project:
 ## Credits
 
 A sample macro for checking peoplecount was used as the basis of this macro.
+See https://github.com/jruys/peoplecount for a similar macro
