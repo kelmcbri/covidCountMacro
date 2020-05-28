@@ -35,7 +35,7 @@ This is javascript code designed to run as a macro on a Cisco Video Codec.
 
 ## Authors & Maintainers
 
-People responsible for the creation and maintenance of this project:
+People responsible for the tweaking and maintenance of this project:
 
 - Keller McBride <kelmcbri@cisco.com>
 
